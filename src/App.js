@@ -6,17 +6,9 @@ import Home from './pages/Home';
 import Products from './pages/Products';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
+import Seller from './pages/Seller';
 
 function App() {
-  let [count, setCount] = useState(0);
-  function counter() {
-    count += 1;
-    setCount(count);
-  }
-  function reseter() {
-    setCount(0);
-  }
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -24,13 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/products" element={<Products />}></Route>
+          <Route path="/seller" element={<Seller />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
-
-      <h3>Your click Count : {count}</h3>
-      <button onClick={counter}>add</button>
-      <button onClick={reseter}>reset</button>
     </div>
   );
 }

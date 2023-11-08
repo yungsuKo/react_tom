@@ -1,0 +1,45 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  padding: 20px 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.006);
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#navbar li {
+  list-style: none;
+  padding: 0 12px;
+}
+
+#navbar li a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+}
+
+#navbar li a:hover {
+  color: #17c;
+}
+#navbar li a:hover::after,
+#navbar li a.active::after {
+  content: '';
+  width: 30%;
+  height: 2px;
+  background: #17c;
+  position: absolute;
+  bottom: -4px;
+  left: 28px;
+}
+
+#mobile img {
+  color: #fff;
+  width: 16px;
+  height: 16px;
+}

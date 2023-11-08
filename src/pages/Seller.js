@@ -32,11 +32,7 @@ const Seller = () => {
       <input type="text" onChange={handleChange} />
       <button onClick={getRevenue}>입력</button>
 
-      <div>
-        {Math.floor((revenue / 7) * 30)
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-      </div>
+      <div>{revenue}</div>
       <History historys={historys} />
     </div>
   );

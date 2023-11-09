@@ -6,12 +6,16 @@ import { Component } from 'react';
 
 class Navbar extends Component {
   state = { clicked: false };
+  handleClick = () => {
+    this.setState({ clicked: !this.state.clicked });
+    console.log(this.state.clicked);
+  };
   render() {
     return (
       <>
         <nav>
           <Link to="/">logo</Link>
-          <ul id="navbar">
+          <ul id="navbar" className={this.state.clicked ? 'active' : ''}>
             <li>
               <Link to="/seller">스토어 매출</Link>
             </li>
@@ -19,7 +23,7 @@ class Navbar extends Component {
               <Link>상품 업로드 일자</Link>
             </li>
           </ul>
-          <div id="mobile">
+          <div id="mobile" onClick={this.handleClick}>
             {this.state.clicked ? (
               <Chevronup width="20" height="20" fill="orange" />
             ) : (

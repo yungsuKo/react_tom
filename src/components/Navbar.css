@@ -2,7 +2,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: black;
+  background-color: grey;
   padding: 20px 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.006);
 }
@@ -42,4 +42,34 @@ nav {
   color: #fff;
   width: 16px;
   height: 16px;
+}
+#mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 64px;
+    right: -300px;
+    width: 200px;
+    height: 100%;
+    background: #2a3239;
+  }
+  #mobile {
+    display: block;
+  }
+  #navbar li {
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+
+  #navbar.active {
+    right: 0px;
+  }
 }

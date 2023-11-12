@@ -1,10 +1,15 @@
+header {
+  width: 100%;
+  background-color: black;
+}
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: grey;
   padding: 20px 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.006);
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 #navbar {

@@ -1,8 +1,9 @@
 import { ReactComponent as Chevrondown } from '../svgs/solid/chevron-down.svg';
 import { ReactComponent as Chevronup } from '../svgs/solid/chevron-up.svg';
+import { ReactComponent as Android } from '../svgs/brands/android.svg';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import React, { Component, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 function Navbar() {
   const [menuState, setMenuState] = useState(false);
@@ -16,8 +17,9 @@ function Navbar() {
   useEffect(() => {
     function handleOutClick(e) {
       console.log('e.target ', e.target);
+      console.log('menuRef.current ', menuRef.current);
       console.log('menuState ', menuState);
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
+      if (menuState && !menuRef.current.contains(e.target)) {
         console.log(menuState);
         setMenuState(menuState ? false : true);
       }
@@ -29,18 +31,38 @@ function Navbar() {
   }, [menuState]);
 
   return (
-    <>
+    <header>
       <nav>
-        <Link to="/">logo</Link>
+        <Link to="/">
+          <Android width="20" height="20" fill="orange" />
+        </Link>
         <ul id="navbar" className={menuState ? 'active' : ''} ref={menuRef}>
           <li>
-            <Link to="/seller">스토어 매출</Link>
+            <Link
+              to="/seller"
+              onClick={() => {
+                setMenuState(!menuState);
+              }}
+            >
+              스토어 매출
+            </Link>
           </li>
           <li>
-            <Link>상품 업로드 일자</Link>
+            <Link
+              onClick={() => {
+                setMenuState(!menuState);
+              }}
+            >
+              상품 업로드 일자
+            </Link>
           </li>
         </ul>
-        <div id="mobile">
+        <div
+          id="mobile"
+          onClick={() => {
+            setMenuState(!menuState);
+          }}
+        >
           {menuState ? (
             <Chevronup width="20" height="20" fill="orange" />
           ) : (
@@ -48,7 +70,7 @@ function Navbar() {
           )}
         </div>
       </nav>
-    </>
+    </header>
   );
 }
 

@@ -5,6 +5,7 @@ import Products from './pages/Products';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import Seller from './pages/Seller';
+import { useMemo, useState } from 'react';
 
 function App() {
   return (

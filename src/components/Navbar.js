@@ -7,20 +7,11 @@ import React, { useEffect, useRef, useState } from 'react';
 
 function Navbar() {
   const [menuState, setMenuState] = useState(false);
-  // state = { clicked: false };
   const menuRef = useRef(null);
-  // const handleClick = (e) => {
-  //   setMenuState(menuState ? false : true);
-  //   console.log(menuState);
-  // };
 
   useEffect(() => {
     function handleOutClick(e) {
-      console.log('e.target ', e.target);
-      console.log('menuRef.current ', menuRef.current);
-      console.log('menuState ', menuState);
       if (menuState && !menuRef.current.contains(e.target)) {
-        console.log(menuState);
         setMenuState(menuState ? false : true);
       }
     }

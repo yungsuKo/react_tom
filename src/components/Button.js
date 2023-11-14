@@ -1,7 +1,8 @@
 const Button = (props) => {
+  const { onClick, children } = props;
   return (
     <div>
-      <button>{props.text}</button>
+      <button onClick={onClick}>{props.children}</button>
     </div>
   );
 };

@@ -1,28 +1,26 @@
 import { useState } from 'react';
-import { ModalsDispatchContext, ModalsStateContext } from './ModalContext';
-import { useMemo } from 'react';
+import { ModalsStateContext, ModalsDispatchContext } from './ModalContext';
 
 const ModalsProvider = ({ children }) => {
-  const [openModals, setOpenModals] = useState([]);
-
+  const [openedModals, setOpenedModals] = useState([]);
   const open = (Component, props) => {
-    setOpenModals((modals) => {
+    setOpenedModals((modals) => {
       return [...modals, { Component, props }];
     });
   };
   const close = (Component) => {
-    setOpenModals((modals) => {
-      return modals.filter((modal) => {
-        return modal.Component !== Component;
-      });
+    setOpenedModals((modals) => {
+      return modals.filter((modal) => modal.Component !== Component);
     });
   };
-  const dispatch = useMemo(() => ({ open, close }), []);
 
+  const dispatch = { open, close };
   return (
-    <ModalsStateContext.Provider value={openModals}>
-      <ModalsDispatchContext value={dispatch}>{children}</ModalsDispatchContext>
-    </ModalsStateContext.Provider>
+    <ModalsDispatchContext.Provider value={dispatch}>
+      <ModalsStateContext.Provider value={openedModals}>
+        {children}
+      </ModalsStateContext.Provider>
+    </ModalsDispatchContext.Provider>
   );
 };
 

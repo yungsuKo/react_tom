@@ -3,19 +3,10 @@ import './Home.css';
 
 import useModals from '../context/useModal';
 import Modals from '../components/Modals';
-import ReactModal from 'react-modal';
+import Modal from '../components/Modal';
 
-const MyModal = ({ isOpen, description, onConfirm, onCancel }) => {
-  return (
-    <ReactModal isOpen={isOpen}>
-      <h1>모달입니다.</h1>
-      <p>{description}</p>
-      <div>
-        <button onClick={onConfirm}>확인</button>
-        <button onClick={onCancel}>취소</button>
-      </div>
-    </ReactModal>
-  );
+const MyModal = ({ text, onClick }) => {
+  return <Modal text={text} onClick={onClick} />;
 };
 
 const Home = () => {
@@ -37,16 +28,15 @@ const Home = () => {
   const handleClick = () => {
     console.log('ddd');
     openModal(MyModal, {
-      isOpen: true,
-      description: '안녕하세요 모달입니다.',
-      onConfirm: () => {
+      text: '안녕하세요 모달입니다.',
+      onClick: () => {
         console.log('onsubmit clicked');
         closeModal(MyModal);
       },
-      onCancel: () => {
-        console.log('onDDD clicked');
-        closeModal(MyModal);
-      },
+      // onCancel: () => {
+      //   console.log('onDDD clicked');
+      //   closeModal(MyModal);
+      // },
     });
   };
   return (

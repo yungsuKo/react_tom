@@ -9,6 +9,7 @@
 
 .modal_container {
   position: relative;
+  top: 50%;
   width: 300px;
   background-color: white;
   margin: auto;

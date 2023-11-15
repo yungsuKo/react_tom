@@ -5,12 +5,13 @@ import useModals from '../context/useModal';
 import Modals from '../components/Modals';
 import ReactModal from 'react-modal';
 
-const MyModal = ({ isOpen, onCancel, onSubmit }) => {
+const MyModal = ({ isOpen, description, onConfirm, onCancel }) => {
   return (
     <ReactModal isOpen={isOpen}>
       <h1>모달입니다.</h1>
+      <p>{description}</p>
       <div>
-        <button onClick={onSubmit}>확인</button>
+        <button onClick={onConfirm}>확인</button>
         <button onClick={onCancel}>취소</button>
       </div>
     </ReactModal>
@@ -32,12 +33,19 @@ const Home = () => {
   //   setOpen(isOpen ? false : true);
   // };
 
-  const { openModal } = useModals();
+  const { openModal, closeModal } = useModals();
   const handleClick = () => {
     console.log('ddd');
     openModal(MyModal, {
-      onSubmit: () => {
-        console.log('로직 처리...');
+      isOpen: true,
+      description: '안녕하세요 모달입니다.',
+      onConfirm: () => {
+        console.log('onsubmit clicked');
+        closeModal(MyModal);
+      },
+      onCancel: () => {
+        console.log('onDDD clicked');
+        closeModal(MyModal);
       },
     });
   };

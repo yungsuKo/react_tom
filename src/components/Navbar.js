@@ -47,6 +47,16 @@ function Navbar() {
               상품 업로드 일자
             </Link>
           </li>
+          <li>
+            <Link
+              to="/chat"
+              onClick={() => {
+                setMenuState(!menuState);
+              }}
+            >
+              chat
+            </Link>
+          </li>
         </ul>
         <div
           id="mobile"

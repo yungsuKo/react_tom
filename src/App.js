@@ -5,6 +5,7 @@ import Products from './pages/Products';
 import './index.css';
 import Seller from './pages/Seller';
 import Chat from './pages/Chat';
+import './js/scroll.js';
 
 function App() {
   return (

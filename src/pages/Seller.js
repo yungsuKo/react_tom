@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { useState } from 'react';
 import History from '../components/History';
+import Layout from '../layouts/Layout';
+import Button from '../components/Button';
+import Input from '../components/Input';
 const baseUrl = 'http://localhost:4000';
 
 const Seller = () => {
@@ -24,17 +27,22 @@ const Seller = () => {
     console.log(historys);
   };
   const handleChange = (e) => {
+    console.log(url);
     setUrl(e.target.value);
   };
 
   return (
-    <div>
-      <input type="text" onChange={handleChange} />
-      <button onClick={getRevenue}>입력</button>
+    <Layout>
+      <Input
+        type="text"
+        onChange={handleChange}
+        placeholder="스토어 url을 입력하세요!"
+      />
+      <Button onClick={getRevenue}>입력</Button>
 
       <div>{revenue}</div>
       <History historys={historys} />
-    </div>
+    </Layout>
   );
 };
 

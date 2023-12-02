@@ -1,9 +1,11 @@
+import { MainButton } from '../styled_components/Button';
+
 const Button = (props) => {
   const { onClick, children } = props;
   return (
-    <div>
-      <button onClick={onClick}>{props.children}</button>
-    </div>
+    <MainButton className="bg-gray-200" type="button" onClick={onClick}>
+      {props.children}
+    </MainButton>
   );
 };
 

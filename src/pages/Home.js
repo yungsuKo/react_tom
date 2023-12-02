@@ -23,6 +23,7 @@ const Home = () => {
   return (
     <Layout>
       <div className="text-3xl">Hello this is home</div>
+
       <Button onClick={handleClick}>모달</Button>
       <Modals />
       <div style={{ height: '1500px' }}>dd</div>

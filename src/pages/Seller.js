@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import History from '../components/History';
 import Layout from '../layouts/Layout';
 import Button from '../components/Button';
@@ -8,22 +8,34 @@ const baseUrl = 'http://localhost:4000';
 
 const Seller = () => {
   let [revenue, setRevenue] = useState(0);
+  const [initData, setInitData] = useState([]);
   const [url, setUrl] = useState('');
   const [historys, setHistorys] = useState([]);
 
+  useEffect(() => {
+    const getInitData = async () => {
+      const res = await axios.get(`${baseUrl}/store`);
+      console.log(res);
+      setInitData(res.data);
+    };
+    getInitData();
+  }, []);
+
   const children = [];
   const getRevenue = async () => {
-    const res = await axios.get(`${baseUrl}/store`, {
-      params: {
-        url,
-      },
+    const res = await axios.post(`${baseUrl}/store`, {
+      url,
     });
-    revenue = Math.floor((res.data / 7) * 30)
+    const { channelName, storeId, storeRevenue7d, create_dt } = res.data;
+    revenue = Math.floor((storeRevenue7d / 7) * 30)
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     setRevenue(revenue);
 
-    setHistorys([...historys, { url, revenue }]);
+    setHistorys([
+      ...historys,
+      { url: `https://smartstore.naver.com/${storeId}`, revenue },
+    ]);
     console.log(historys);
   };
   const handleChange = (e) => {

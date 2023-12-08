@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import Messages from '../components/Messages';
 import Rooms from '../components/Rooms';
+import Layout from '../layouts/Layout';
 
 const ENDPOINT = 'http://localhost:4000/coin';
 const socket = io(ENDPOINT);
@@ -57,7 +58,7 @@ const Chat = () => {
   };
 
   return (
-    <>
+    <Layout>
       <div>
         <input
           placeholder="생성할 방 이름을 입력하세요"
@@ -76,7 +77,7 @@ const Chat = () => {
       </ul>
       <input type="text" onChange={onChat} value={message} />
       <input type="submit" onClick={onSend} />
-    </>
+    </Layout>
   );
 };
 export default Chat;
